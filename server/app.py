@@ -20,7 +20,7 @@ class Login(Resource):
         user = User.query.filter_by(username=data['username']).first()
         if user and user.check_password(data['password']):
             token = create_access_token(identity=user.id)
-            return {'access_token': token}, 200
+            return {'access_token': token , 'username': user.username}, 200
         return {'message': 'Invalid credentials'}, 401
 class Notes(Resource):
     @jwt_required()
