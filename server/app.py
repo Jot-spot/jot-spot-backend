@@ -3,6 +3,7 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 from config import app, db, api
 from models import User, Note
 from flask_restful import Resource
+import os
 class Register(Resource):
     def post(self):
         data = request.get_json()
@@ -65,5 +66,7 @@ api.add_resource(NoteById, '/notes/<int:id>')
 def index():
     return '<h1>JotSpot Flask API Running</h1>'
 
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
