@@ -1,6 +1,7 @@
 from config import db
 from sqlalchemy_serializer import SerializerMixin
 from werkzeug.security import generate_password_hash,check_password_hash
+from datetime import datetime
 
 class User(db.Model,SerializerMixin):
     __tablename__ = 'users'
@@ -27,7 +28,7 @@ class Note(db.Model,SerializerMixin):
     title=db.Column(db.String,nullable=False)
     content=db.Column(db.Text,nullable=False)
     tags=db.Column(db.String)
-
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
     user_id=db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
 
     serialize_rules=('-user',)       
