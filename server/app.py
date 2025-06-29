@@ -4,7 +4,7 @@ from server.config import app, db, api
 from models import User, Note
 from flask_restful import Resource
 
-app = Flask(__name__)
+
 class Register(Resource):
     def post(self):
         data = request.get_json()
