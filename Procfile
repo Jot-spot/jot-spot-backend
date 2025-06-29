@@ -1,2 +1,1 @@
-web: gunicorn server.config:app
-
+web: gunicorn server.app:app
