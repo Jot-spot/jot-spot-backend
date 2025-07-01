@@ -1,3 +1,4 @@
+import os
 from flask import request, jsonify
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from server.config import app, db, api
@@ -68,6 +69,5 @@ def index():
     return '<h1>JotSpot Flask API Running</h1>'
 
 if __name__ == '__main__':
-    import os
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
